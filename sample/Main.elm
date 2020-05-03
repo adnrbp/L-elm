@@ -9,15 +9,23 @@ answer =
     "Because i need it"
 
 
-
+-- render model of app
 view model = 
     text model
 
 
+-- provides initial state (model) of an app
 init =
     "Question: " 
     ++ question
     ++ " Answer:"
     ++ answer
 
-main = view init
+-- lambda function
+toUpper = 
+    (\ str -> String.toUpper str)
+
+main = 
+    init
+        |> toUpper
+        |> view
