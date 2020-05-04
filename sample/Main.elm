@@ -1,6 +1,7 @@
 module Main exposing (..)
 
 import Html exposing (text)
+import Set
 
 question =
     "Why you buy this?"
@@ -38,9 +39,17 @@ transformList list2 =
         -- |>List.map toString
         |> String.join ", "
 
+set =
+    Set.fromList list
+
+transformSet set2 =
+    set2
+        |> Set.map (\a -> a+1 )
+        |> Set.map String.fromInt
+        |> Set.toList 
+        |> String.join ", "
+
 main = 
-    list
-        |> transformList
-        -- |> String.fromList
-        -- |> toString
+    set
+        |> transformSet
         |> text
