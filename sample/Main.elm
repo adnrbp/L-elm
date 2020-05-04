@@ -2,6 +2,8 @@ module Main exposing (..)
 
 import Html exposing (text)
 import Set
+import Array
+--import Maybe.Extra exposing (unwrap)
 
 question =
     "Why you buy this?"
@@ -49,7 +51,19 @@ transformSet set2 =
         |> Set.toList 
         |> String.join ", "
 
+array = 
+    Array.empty
+        |> Array.push 1
+        |> Array.push 2
+        |> Array.push 3
+
+transformArray array2 =
+    array2
+        |> Array.get 1
+        |> String.fromInt
+        --|> unwrap
+
 main = 
-    set
-        |> transformSet
+    array
+        |> transformArray
         |> text
