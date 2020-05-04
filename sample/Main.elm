@@ -9,17 +9,27 @@ answer =
     "Because i need it"
 
 
--- render model of app
-view model = 
-    text model
 
 
 -- provides initial state (model) of an app
 init =
-    "Question: " 
-    ++ question
-    ++ " Answer:"
-    ++ answer
+    ( question, answer )
+    -- "Question: " 
+    -- ++ question
+    -- ++ " Answer:"
+    -- ++ answer
+
+
+-- render model of app
+view model = 
+    text (
+        "Question: " 
+        ++ (Tuple.first model) --buil-in function "first"
+        ++ " Answer:"
+        ++ (Tuple.second model)
+    )
+
+
 
 -- lambda function
 toUpper = 
@@ -34,8 +44,10 @@ sumWithOne =
     sum 1
     
 main = 
+    init
+        |> view
     -- parenthesis: group operators, single argument
-    text (String.fromInt (sumWithOne 1))
+    -- text (String.fromInt (sumWithOne 1))
     -- text (toString (sumWithOne 1))
     -- init
     --     |> toUpper
