@@ -28,7 +28,19 @@ view model =
         ++ (model.answer)
     )
 
+list = 
+    1 :: [ 2 ] ++ [ 3 ]
     
+transformList list2 =
+    list2
+        |> List.map (\a -> a+1)
+        |> List.map String.fromInt
+        -- |>List.map toString
+        |> String.join ", "
+
 main = 
-    init
-        |> view
+    list
+        |> transformList
+        -- |> String.fromList
+        -- |> toString
+        |> text
