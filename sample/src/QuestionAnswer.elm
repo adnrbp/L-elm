@@ -24,13 +24,12 @@ answer =
 -- provides initial state (model) of an app
 init : Model
 init =
-    { questions =
-        [{ question = question_base
-         , correct = answer
-         , incorrect = []
-         }
+    Model
+        [ Question
+            question_base
+            answer
+            []
         ]
-    }
 
 
 -- render model of app
