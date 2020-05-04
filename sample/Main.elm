@@ -25,7 +25,18 @@ init =
 toUpper = 
     (\ str -> String.toUpper str)
 
+-- partial app
+sum a b =
+    a + b
+
+-- partially apply sum function withOne
+sumWithOne =
+    sum 1
+    
 main = 
-    init
-        |> toUpper
-        |> view
+    -- parenthesis: group operators, single argument
+    text (String.fromInt (sumWithOne 1))
+    -- text (toString (sumWithOne 1))
+    -- init
+    --     |> toUpper
+    --     |> view
