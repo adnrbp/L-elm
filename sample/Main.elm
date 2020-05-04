@@ -13,42 +13,22 @@ answer =
 
 -- provides initial state (model) of an app
 init =
-    ( question, answer )
-    -- "Question: " 
-    -- ++ question
-    -- ++ " Answer:"
-    -- ++ answer
+    { question = question
+    , answer = answer
+    }
 
 
 -- render model of app
+--view { question2, answer2} = 
 view model = 
     text (
         "Question: " 
-        ++ (Tuple.first model) --buil-in function "first"
+        ++ (.question model) --buil-in function "first"
         ++ " Answer:"
-        ++ (Tuple.second model)
+        ++ (model.answer)
     )
 
-
-
--- lambda function
-toUpper = 
-    (\ str -> String.toUpper str)
-
--- partial app
-sum a b =
-    a + b
-
--- partially apply sum function withOne
-sumWithOne =
-    sum 1
     
 main = 
     init
         |> view
-    -- parenthesis: group operators, single argument
-    -- text (String.fromInt (sumWithOne 1))
-    -- text (toString (sumWithOne 1))
-    -- init
-    --     |> toUpper
-    --     |> view
