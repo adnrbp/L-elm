@@ -2,6 +2,35 @@ module QuestionAnswer exposing (..)
 
 import Html exposing (Html, text)
 
+
+-- Union type
+type Difficulty
+    = Any
+    | Easy
+    | Medium
+    | Hard
+
+-- define a default value for Difficulty
+default : Difficulty
+default =
+    Any
+
+-- Take 2 args and return a tuple
+-- (=>) : a -> a -> (a,b)
+-- (=>) =
+--     (,)
+
+-- list of all the difficulties to display on screen
+list : List ( String, Difficulty )
+list =
+    -- string representation to easily handle
+    [ ("Any", Any) -- "Any" => Any
+    , ("Easy", Easy)
+    , ("Medium", Medium)
+    , ("Hard", Hard)
+    ]
+
+
 type alias Question = 
     -- Each question type have 3 values
     { question : String
@@ -11,7 +40,9 @@ type alias Question =
 
 type alias Model = 
     -- The model type has 1 value (a list of type Question)
-    { questions : List Question
+    -- trivia difficulty
+    { difficulty : Difficulty
+    , questions : List Question
     }
 
 question_base =
@@ -25,6 +56,7 @@ answer =
 init : Model
 init =
     Model
+        Any
         [ Question
             question_base
             answer
